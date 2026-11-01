@@ -1,7 +1,6 @@
-from info import Record, AddressBook
 import pickle
 from pathlib import Path
-
+from info import AddressBook, ConsoleView, Record
 
 DATA_FILE = Path(__file__).with_name("addressbook.pkl")
 
@@ -109,6 +108,7 @@ def load_data(filename=DATA_FILE):
 
 def main():
     book = load_data()
+    view = ConsoleView()
     print("Welcome to the assistant bot!")
 
     try:
@@ -137,7 +137,7 @@ def main():
             elif command == "phone":
                 print(show_phone(args, book))
             elif command == "all":
-                print(show_all(book))
+                view.show_contacts(book)
             elif command == "add-birthday":
                 print(add_birthday(args, book))
             elif command == "show-birthday":

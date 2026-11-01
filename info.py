@@ -1,7 +1,7 @@
 
 from collections import UserDict
 from datetime import date, datetime, timedelta
-
+from abc import ABC, abstractmethod
 
 class Field:
     def __init__(self, value):
@@ -86,7 +86,37 @@ class Record:
             f"birthday: {birthday}"
         )
             
-  
+
+class UserView(ABC):
+    @abstractmethod
+    def show_contacts(self, address_book):
+        pass
+
+    @abstractmethod
+    def show_commands(self):
+        pass
+
+
+class ConsoleView(UserView):
+    def show_contacts(self, address_book):
+        if not address_book.data:
+            print("Address book is empty.")
+            return
+        for record in address_book.data.values():
+            print(record)
+
+    def show_commands(self):
+        print("Available commands: ")
+        print("add")
+        print("phone")
+        print("change")
+        print("add-birthday")
+        print("show-birthday")
+        print("birthdays")
+        print("all")
+        print("exit")
+
+
 class AddressBook(UserDict): 
     def add_record(self, record: Record):
         self.data[record.name.value] = record
