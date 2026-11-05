@@ -107,6 +107,7 @@ class ConsoleView(UserView):
 
     def show_commands(self):
         print("Available commands: ")
+        print("help")
         print("add")
         print("phone")
         print("change")

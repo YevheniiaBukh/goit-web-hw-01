@@ -110,6 +110,7 @@ def main():
     book = load_data()
     view = ConsoleView()
     print("Welcome to the assistant bot!")
+    view.show_commands()
 
     try:
         while True:
@@ -128,6 +129,8 @@ def main():
             if command in ["close", "exit"]:
                 print("Good bye!")
                 break
+            elif command == "help":
+                view.show_commands()
             elif command == "hello":
                 print("How can I help you?")
             elif command == "add":
