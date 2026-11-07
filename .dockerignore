@@ -1,0 +1,5 @@
+.venv
+.git
+--pycache__
+*.pyc
+install-poetry.py
