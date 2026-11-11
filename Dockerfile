@@ -1,7 +1,11 @@
 FROM python:3.13.5-slim
 
+RUN pip install poetry
+
 WORKDIR /app
 
 COPY . .
 
-CMD ["python", "main.py"]
+RUN poetry install
+
+CMD [ "poetry", "run", "python", "main.py"]
